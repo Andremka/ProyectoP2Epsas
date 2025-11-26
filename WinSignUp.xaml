@@ -1,0 +1,115 @@
+﻿<Window x:Class="WpfApp2P2D.WinSignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2P2D"
+        mc:Ignorable="d"
+        Title="WinSignUp" Height="550" Width="400"
+        >
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Label
+    x:Name="lblSignUp"
+    Content="SIGN UP SAMAPA"
+    HorizontalAlignment="Center"
+    Grid.ColumnSpan="2"/>
+        <Label
+    x:Name="lblNombre"
+    Content="Nombre:"
+    Grid.Row="1"/>
+        <Label
+    x:Name="lblApPat"
+    Content="Ap. Paterno:"
+    Grid.Row="2"/>
+        <Label
+    x:Name="lblApMat"
+    Content="Ap. Materno:"
+    Grid.Row="3"/>
+        <Label
+    x:Name="lblCorreo"
+    Content="E-mail:"
+    Grid.Row="4"/>
+        <Label
+    x:Name="lblCelular"
+    Content="Celular:"
+    Grid.Row="5"/>
+        <Label
+    x:Name="lblNacimiento"
+    Content="Año Nacimiento:"
+    Grid.Row="6"/>
+        <Label
+    x:Name="lblContra"
+    Content="Contraseña:"
+    Grid.Row="7"/>
+
+        <TextBox x:Name="txtNombre"
+    Grid.Row="1"
+    Grid.Column="1"
+    PreviewTextInput="txtNombre_PreviewTextInput"/>
+        <TextBox x:Name="txtApPat"
+    Grid.Row="2"
+    Grid.Column="1"
+    PreviewTextInput="txtApPat_PreviewTextInput"/>
+        <TextBox x:Name="txtApMat"
+    Grid.Row="3"
+    Grid.Column="1"
+    PreviewTextInput="txtApMat_PreviewTextInput"/>
+        <TextBox x:Name="txtCorreo"
+    Grid.Row="4"
+    Grid.Column="1"
+    PreviewTextInput="txtCorreo_PreviewTextInput"/>
+        <TextBox x:Name="txtCelular"
+    Grid.Row="5"
+    Grid.Column="1"
+    PreviewTextInput="txtCelular_PreviewTextInput"/>
+        <TextBox x:Name="txtNacimiento"
+    Grid.Row="6"
+    Grid.Column="1"
+    PreviewTextInput="txtNacimiento_PreviewTextInput"/>
+        <PasswordBox x:Name="pwdContraseña"
+      Grid.Row="7"
+      Grid.Column="1"
+      Width="200"
+      Height="25"
+      HorizontalAlignment="Left"
+      VerticalAlignment="Center"
+      Margin="5"
+                     Opacity="0.55"/>
+        <TextBox x:Name="txtResFinal"
+    Grid.Row="10"
+    Grid.ColumnSpan="2"
+         Height="85"
+         Opacity="0.55"/>
+
+        <Button x:Name="btnLimpiar"
+        Content="LIMPIAR"
+        Grid.Row="8" Click="btnLimpiar_Click"/>
+        <Button x:Name="btnAceptar"
+        Content="ACEPTAR"
+        Grid.Column="1"
+        Grid.Row="8" Click="btnAceptar_Click"/>
+
+        <Label x:Name="lblMensajes"
+       Grid.Row="9"
+       Grid.ColumnSpan="2"
+       HorizontalAlignment="Center"
+       VerticalAlignment="Center"/>
+    </Grid>
+</Window>

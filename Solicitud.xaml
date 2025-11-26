@@ -1,0 +1,98 @@
+﻿<Window x:Class="WpfApp2P2D.Solicitud"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2P2D"
+        mc:Ignorable="d"
+        Title="Solicitud" Height="550" Width="600">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Label  x:Name="lblSolicitud"
+                Content="SOLICITUD DE SERVICIO"
+                HorizontalAlignment="Center"/>
+        <Label x:Name="lblDatosSolicitante"
+               Content="DATOS DEL SOLICITANTE"
+               Grid.Row="1"
+               HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal">
+            <Label x:Name="lblDatos"
+                   Content="CI Propietario:"/>
+            <TextBox x:Name="txtCI"
+                     Width="150"
+                     Height="30"/>
+        </StackPanel>
+        <Label x:Name="lblDatosInmueble"
+       Content="DATOS DEL INMUEBLE"
+       Grid.Row="3"
+       HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <Label x:Name="lblDireccion"
+                   Content="Direccion: "/>
+            <TextBox x:Name="txtDireccion"
+                     Width="220"
+                     Height="30"/>
+            <Label x:Name="lblNroCasa"
+                  Content="Nro Casa: "/>
+            <TextBox x:Name="txtNroCasa"
+                     Width="50"
+                     Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <Label x:Name="lblCoordenadas"
+           Content="Coordenadas:"/>
+            <TextBox x:Name="txtCoordenadas"
+             Width="120"
+             Height="30"/>
+            <Label x:Name="lblTipoInmueble"
+          Content="Tipo Inmueble:"/>
+            <TextBox x:Name="txtTipoInmueble"
+             Width="120"
+             Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Label x:Name="lblPropietario"
+                   Content="El Solicitante es Propietario (Si/No): "/>
+            <TextBox x:Name="txtPropietario"
+                     Height="30"
+                     Width="50"/>
+        </StackPanel>
+        <Label x:Name="lblDatosTecnicos"
+               Content="DATOS TECNICOS"
+               Grid.Row="7"
+               HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="8" Orientation="Horizontal">
+            <Label x:Name="lblTipoSolicitud"
+                    Content="Tipo de Solicitud:"/>
+            <TextBox x:Name="txtTipoSolicitud"
+                     Height="30"
+                     Width="100"/>
+            <Label x:Name="lblUsoServ"
+                    Content="Uso del Servicio:"/>
+            <TextBox x:Name="txtUsoServ"
+                      Height="30"
+                      Width="100"/>
+        </StackPanel>
+        <StackPanel Grid.Row="9" Orientation="Horizontal">
+            <Button x:Name="btnClear"
+                    Content="LIMPIAR"
+                    Margin="135,0,5,0" Click="btnClear_Click"/>
+            <Button x:Name="btnGuardar"
+                    Content="GUARDAR"
+                    Margin="85,0,0,0" Click="btnGuardar_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
