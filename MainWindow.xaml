@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="450"
-        >
+        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
+                Opacity="0.85"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -19,7 +22,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
         <Label x:Name="lblLogin"
@@ -37,9 +40,9 @@
                  Opacity="0.55"/>
         <PasswordBox x:Name="pwdPassword" Height="50" Width="205" Grid.Row="2" Grid.Column="1" Opacity="0.55"/>
 
-        <Button x:Name="btnClean" Content="Limpiar" Grid.Row="3" Click="btnClean_Click"/>
-        <Button x:Name="btnAcept" Content="Aceptar" Grid.Row="3" Grid.Column="1" Click="btnAcept_Click"/>
-        <Button x:Name="btnRegistrar" Content="Registrarse" Grid.Row="4" Grid.ColumnSpan="2" Click="btnRegistrar_Click"/>
+        <Button x:Name="btnClean" Content="LIMPIAR" Grid.Row="3" Click="btnClean_Click"/>
+        <Button x:Name="btnAcept" Content="ACEPTAR" Grid.Row="3" Grid.Column="1" Click="btnAcept_Click"/>
+        <Button x:Name="btnRegistrar" Content="REGISTRARSE" Grid.Row="4" Grid.ColumnSpan="2" Click="btnRegistrar_Click" Width="150"/>
 
         <Label x:Name="lblMensajes"
                Grid.Row="5"

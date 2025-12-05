@@ -36,7 +36,6 @@ namespace WpfApp2P2D
             txtCelular.Clear();
             txtNacimiento.Clear();
             pwdContraseña.Password = "";
-            txtResFinal.Clear();
             lblMensajes.Content = "";
         }
         private void btnAceptar_Click(object sender, RoutedEventArgs e)
@@ -107,7 +106,8 @@ namespace WpfApp2P2D
                 {
                     lblMensajes.Content = "Registro exitoso Bienvenido/a " + txtNombre.Text;
                     lblMensajes.Foreground = Brushes.Black;
-                    txtResFinal.Text =
+
+                    string datos =
                         txtNombre.Text + "," +
                         txtApPat.Text + "," +
                         txtApMat.Text + "," +
@@ -116,9 +116,7 @@ namespace WpfApp2P2D
                         txtNacimiento.Text + "," +
                         pwdContraseña.Password + "\n";
 
-                    string datos = txtResFinal.Text;
                     File.AppendAllText(rutaYnombreArch, datos);
-
 
                     WinPrincipal principal = new WinPrincipal();
                     principal.Show();
@@ -159,6 +157,13 @@ namespace WpfApp2P2D
         {
             Regex regexCorreo = new Regex("^[a-zA-Z0-9@._-]+$");
             e.Handled = !regexCorreo.IsMatch(e.Text);
+        }
+
+        private void btnRegresar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            login.Show();
+            this.Close();
         }
     }
 }

@@ -80,5 +80,12 @@ namespace WpfApp2P2D
                 MessageBox.Show("Error al guardar la Solicitud: " + ex.Message);
             }
         }
+
+        private void btnRegSolicitud_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            login.Show();
+            this.Close();
+        }
     }
 }

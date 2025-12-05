@@ -15,20 +15,18 @@ using System.Windows.Shapes;
 namespace WpfApp2P2D
 {
     /// <summary>
-    /// Lógica de interacción para WinPrincipal.xaml
+    /// Lógica de interacción para DatoSolicitud.xaml
     /// </summary>
-    public partial class WinPrincipal : Window
+    public partial class DatoSolicitud : Window
     {
-        public WinPrincipal()
+        public DatoSolicitud()
         {
             InitializeComponent();
         }
 
-        private void btnContinuar_Click(object sender, RoutedEventArgs e)
+        private void btnAgregarSolicitud_Click(object sender, RoutedEventArgs e)
         {
-            Solicitud ventanaSolicitud = new Solicitud();
-            ventanaSolicitud.Show();
-            this.Close();
+
         }
     }
 }

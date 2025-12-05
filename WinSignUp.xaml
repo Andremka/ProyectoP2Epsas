@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="WinSignUp" Height="550" Width="400"
-        >
+        Title="WinSignUp" Height="550" Width="435"
+        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
+                Opacity="0.85"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -23,7 +26,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Label
     x:Name="lblSignUp"
@@ -92,19 +95,20 @@
       VerticalAlignment="Center"
       Margin="5"
                      Opacity="0.55"/>
-        <TextBox x:Name="txtResFinal"
-    Grid.Row="10"
-    Grid.ColumnSpan="2"
-         Height="85"
-         Opacity="0.55"/>
+        
 
-        <Button x:Name="btnLimpiar"
-        Content="LIMPIAR"
-        Grid.Row="8" Click="btnLimpiar_Click"/>
-        <Button x:Name="btnAceptar"
-        Content="ACEPTAR"
-        Grid.Column="1"
-        Grid.Row="8" Click="btnAceptar_Click"/>
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button x:Name="btnRegresar"
+                    Content="REGRESAR" Click="btnRegresar_Click"/>
+            <Button x:Name="btnLimpiar"
+Content="LIMPIAR"
+Grid.Row="8" Click="btnLimpiar_Click"/>
+            <Button x:Name="btnAceptar"
+Content="ACEPTAR"
+Grid.Column="1"
+Grid.Row="8" Click="btnAceptar_Click"/>
+        </StackPanel>
+        
 
         <Label x:Name="lblMensajes"
        Grid.Row="9"

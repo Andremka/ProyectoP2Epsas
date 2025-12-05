@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="WinPrincipal" Height="300" Width="300"
-        >
+        Title="WinPrincipal" Height="350" Width="350"
+        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
+                Opacity="0.85"/>
+        </Grid.Background>
         <Label x:Name="lblBienv"
-               Content="Bienvenido Al Sistema"
-               Width="224"
+               Content="BIENVENIDO AL SISTEMA"
+               Width="250"
                FontSize="20"
-               VerticalAlignment="Top" Margin="45,30,0,0" HorizontalAlignment="Left"/>
+               VerticalAlignment="Top" Margin="0,54,0,0"/>
         <Button
             x:Name="btnContinuar"
-            Content="CONTINUAR" Margin="90,221,90,18"/>
+            Content="CONTINUAR" Margin="90,142,90,97"
+            Click="btnContinuar_Click"/>
     </Grid>
 </Window>

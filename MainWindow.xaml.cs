@@ -81,8 +81,8 @@ namespace WpfApp2P2D
                     }
                     if (encontrado)
                     {
-                        lblMensajes.Content = "Bienvenido al sistema" + txtCorreo.Text;
-                        lblMensajes.Foreground = Brushes.White;
+                        lblMensajes.Content = "Bienvenido al sistema " + txtCorreo.Text;
+                        lblMensajes.Foreground = Brushes.Black;
 
                         WinPrincipal principal = new WinPrincipal();
                         principal.Show();
