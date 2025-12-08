@@ -9,7 +9,7 @@
         Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
+            <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
                 Opacity="0.85"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>

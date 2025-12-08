@@ -9,17 +9,17 @@
         Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
+            <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
                 Opacity="0.85"/>
         </Grid.Background>
         <Label x:Name="lblBienv"
                Content="BIENVENIDO AL SISTEMA"
                Width="250"
                FontSize="20"
-               VerticalAlignment="Top" Margin="0,54,0,0"/>
+               VerticalAlignment="Top" Margin="0,65,0,0"/>
         <Button
             x:Name="btnContinuar"
-            Content="CONTINUAR" Margin="90,142,90,97"
+            Content="CONTINUAR" Margin="115,235,115,54"
             Click="btnContinuar_Click"/>
     </Grid>
 </Window>

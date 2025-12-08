@@ -12,7 +12,7 @@
             <Setter Property="Margin"
                     Value="5"/>
             <Setter Property="Foreground"
-                    Value="BlanchedAlmond"/>
+                    Value="White"/>
             <Setter Property="HorizontalAlignment"
                     Value="Center"/>
             <Setter Property="VerticalAlignment"

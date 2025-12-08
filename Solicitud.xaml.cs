@@ -87,5 +87,10 @@ namespace WpfApp2P2D
             login.Show();
             this.Close();
         }
+
+        private void btnContinuar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

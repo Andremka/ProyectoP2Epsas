@@ -8,35 +8,29 @@ namespace WpfApp2P2D
 {
     class SolicitudServ
     {
-        public string ci { get; set; }
-        public string esPropietario { get; set; }
-        public string direccion { get; set; }
-        public string nroCasa { get; set; }
-        public string coordenadas { get; set; }
-        public string tipoInmueble { get; set; }
-        public string tipoSolicitud { get; set; }
-        public string usoServicio { get; set; }
+        public int idSolicitud { get; set; }
+        public string tipoServicio { get; set; }
+        public int fechaSolicitud { get; set; }
+        public string estado { get; set; }
+        public int fechaAprobRech { get; set; }
+        public string observaciones { get; set; }
         public SolicitudServ()
         {
-            ci = "No definido";
-            esPropietario = "No definido";
-            direccion = "No definido";
-            nroCasa = "No definido";
-            coordenadas = "No definido";
-            tipoInmueble = "No definido";
-            tipoSolicitud = "No definido";
-            usoServicio = "No definido";
+            idSolicitud = 0;
+            tipoServicio = "No definido";
+            fechaSolicitud = 0;
+            estado = "No definido";
+            fechaAprobRech = 0;
+            observaciones = "No definido";
         }
-        public SolicitudServ(string nroCi, string esProp, string dir, string nCasa, string coord, string tipInm, string tipSol, string uServ)
+        public SolicitudServ(int idS, string tipoS, int fechSol, string est, int fechAR, string obs)
         {
-            ci = "No definido";
-            esPropietario = "No definido";
-            direccion = "No definido";
-            nroCasa = "No definido";
-            coordenadas = "No definido";
-            tipoInmueble = "No definido";
-            tipoSolicitud = "No definido";
-            usoServicio = "No definido";
+            idSolicitud = idS;
+            tipoServicio = tipoS;
+            fechaSolicitud = fechSol;
+            estado = est;
+            fechaAprobRech = fechAR;
+            observaciones = obs;
         }
     }
 }

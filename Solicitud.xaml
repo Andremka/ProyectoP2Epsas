@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="Solicitud" Height="550" Width="600" ResizeMode="NoResize"
+        Title="Solicitud" Height="850" Width="700" ResizeMode="NoResize"
         Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
-    <Grid>
+    <Grid Margin="1">
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Fondo EPSAS.png"
-                        Opacity="0.85"/>
+            <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
+                        Opacity="0.87"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -36,79 +40,137 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal">
             <Label x:Name="lblDatos"
-                   Content="CI Propietario:"
+                   Content="ID Usuario:"
                    FontSize="18"/>
-            <TextBox x:Name="txtCI"
+            <TextBox x:Name="txtIdUsuario"
+                     Width="120"
+                     Height="30"/>
+            <Label x:Name="lblRol"
+                   Content="Rol:"
+                   FontSize="18"/>
+            <TextBox x:Name="txtRol"
                      Width="150"
                      Height="30"/>
         </StackPanel>
         <Label x:Name="lblDatosInmueble"
-       Content="DATOS DEL INMUEBLE"
-       Grid.Row="3"
-       HorizontalAlignment="Left"/>
+               Content="DATOS DE LA SOLICITUD"
+               Grid.Row="3"
+               HorizontalAlignment="Left"/>
         <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <Label x:Name="lblDireccion"
-                   Content="Direccion: "
+            <Label x:Name="lblIdSolicitud"
+                   Content="ID Solicitud: "
                    FontSize="18"/>
-            <TextBox x:Name="txtDireccion"
-                     Width="220"
+            <TextBox x:Name="txtIdSolicitud"
+                     Width="120"
                      Height="30"/>
-            <Label x:Name="lblNroCasa"
-                  Content="Nro Casa: "
+            <Label x:Name="lblTipoServ"
+                  Content="Tipo Servicio: "
                    FontSize="18"/>
-            <TextBox x:Name="txtNroCasa"
-                     Width="50"
+            <TextBox x:Name="txtTipoServ"
+                     Width="150"
                      Height="30"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <Label x:Name="lblCoordenadas"
-           Content="Coordenadas:"
+            <Label x:Name="lblFechSol"
+                   Content="Fecha Solicitud: "
                    FontSize="18"/>
-            <TextBox x:Name="txtCoordenadas"
-             Width="120"
-             Height="30"/>
-            <Label x:Name="lblTipoInmueble"
-          Content="Tipo Inmueble:"
+            <TextBox x:Name="txtFechaSolicitud"
+                     Width="120"
+                     Height="30"/>
+            <Label x:Name="lblFechaApRech"
+                   Content="Fecha Aprobacion - Rechazo:"
                    FontSize="18"/>
-            <TextBox x:Name="txtTipoInmueble"
-             Width="120"
-             Height="30"/>
+            <TextBox x:Name="txtFechApRech"
+                     Width="110"
+                     Height="30"/>
         </StackPanel>
         <StackPanel Grid.Row="6" Orientation="Horizontal">
-            <Label x:Name="lblPropietario"
-                   Content="El Solicitante es Propietario (Si/No): "
+            <Label x:Name="lblEstado"
+                    Content="Estado:"
+                    FontSize="18"/>
+            <TextBox x:Name="txtEstado"
+                      Width="120"
+                      Height="30"/>
+            <Label x:Name="lblObservacion"
+                   Content="Observaciones: "
                    FontSize="18"/>
-            <TextBox x:Name="txtPropietario"
-                     Height="30"
-                     Width="50"/>
+            <TextBox x:Name="txtObservacion"
+                     Width="300"
+                     Height="30"/>
         </StackPanel>
         <Label x:Name="lblDatosTecnicos"
-               Content="DATOS TECNICOS"
+               Content="DATOS DEL SERVICIO"
                Grid.Row="7"
                HorizontalAlignment="Left"/>
         <StackPanel Grid.Row="8" Orientation="Horizontal">
-            <Label x:Name="lblTipoSolicitud"
-                    Content="Tipo de Solicitud:"
+            <Label x:Name="lblDireccion"
+                    Content="Direccion:"
                    FontSize="18"/>
-            <TextBox x:Name="txtTipoSolicitud"
+            <TextBox x:Name="txtDireccion"
                      Height="30"
-                     Width="100"/>
-            <Label x:Name="lblUsoServ"
-                    Content="Uso del Servicio:"
+                     Width="200"/>
+            <Label x:Name="lblNroMedidor"
+                    Content="Nro Medidor:"
                    FontSize="18"/>
-            <TextBox x:Name="txtUsoServ"
+            <TextBox x:Name="txtNroMedidor"
                       Height="30"
                       Width="100"/>
         </StackPanel>
         <StackPanel Grid.Row="9" Orientation="Horizontal">
+            <Label x:Name="lblTipoInmueble"
+            Content="Tipo Inmueble:"
+           FontSize="18"/>
+            <TextBox x:Name="txtTipoInmuble"
+             Height="30"
+             Width="200"/>
+            <Label x:Name="lblAreaTerreno"
+            Content="Area Terreno (M^2):"
+           FontSize="18"/>
+            <TextBox x:Name="txtAreaTerreno"
+              Height="30"
+              Width="100"/>
+        </StackPanel>
+        <Label x:Name="lblAprobacion"
+               Content="DATOS DE LA APROBACION DEL SERVICIO:"
+               Grid.Row="10"
+               HorizontalAlignment="Left"/>
+        <StackPanel Grid.Row="11" Orientation="Horizontal">
+            <Label x:Name="lblIdAprobacion"
+            Content="ID Aprobacion:"
+           FontSize="18"/>
+            <TextBox x:Name="txtAprobacion"
+             Height="30"
+             Width="120"/>
+            <Label x:Name="lblFechaRev"
+            Content="Fecha Revision:"
+           FontSize="18"/>
+            <TextBox x:Name="txtFechaRevision"
+              Height="30"
+              Width="100"/>
+        </StackPanel>
+        <StackPanel Grid.Row="12" Orientation="Horizontal">
+            <Label x:Name="lblDesicionFinal"
+                    Content="Desicion Final:"
+                   FontSize="18"/>
+            <TextBox x:Name="txtDescisionFinal"
+                     Height="30"
+                     Width="120"/>
+            <Label x:Name="lblMotvDesicion"
+                    Content="Motivo Desicion:"
+                   FontSize="18"/>
+            <TextBox x:Name="txtMotvDesicion"
+                      Height="30"
+                      Width="100"/>
+        </StackPanel>
+        <StackPanel Grid.Row="13" Orientation="Horizontal">
             <Button x:Name="btnRegSolicitud"
-                    Content="REGRESAR" Margin="75,0,5,0" Click="btnRegSolicitud_Click"/>
+                    Content="REGRESAR" Margin="110,0,5,0" Click="btnRegSolicitud_Click"/>
             <Button x:Name="btnClear"
                     Content="LIMPIAR"
-                     Click="btnClear_Click" Margin="35,0,5,0"/>
-            <Button x:Name="btnGuardar"
-                    Content="GUARDAR"
-                    Margin="33,0,0,0" Click="btnGuardar_Click"/>
+                     Click="btnClear_Click" Margin="50,0,5,0"/>
+            <Button x:Name="btnContinuar"
+                    Content="CONTINUAR"
+                    Margin="55,0,0,0" Click="btnContinuar_Click"/>
         </StackPanel>
     </Grid>
 </Window>
