@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
         Title="Solicitud" Height="850" Width="700" ResizeMode="NoResize"
-        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
+        >
     <Grid Margin="1">
         <Grid.Background>
             <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"

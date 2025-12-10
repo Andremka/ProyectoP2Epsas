@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="DatoSolicitud" Height="600" Width="750"
-        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
+        Title="DatoSolicitud" Height="800" Width="750"
+        >
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
@@ -14,6 +14,7 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -34,14 +35,14 @@
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Width="50"/>
-                    <DataGridTextColumn Header="EL SOLICITANTE ES PROPIETARIO?" Width="200"/>
+                    <DataGridTextColumn Header="NOMBRE" Width="200"/>
                 </DataGrid.Columns>
             </DataGrid>   
         </StackPanel>
 
         <StackPanel Grid.Row="2">
             <Label x:Name="lblDatInmueble"
-                   Content="DATOS INMUEBLE: "
+                   Content="DATOS SOLICITUD: "
                    HorizontalAlignment="Left"
                    FontSize="15"/>
             <DataGrid Height="70" Width="500" Margin="10"
@@ -57,12 +58,12 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3">
-            <Label x:Name="lblDatosTecnicos"
-                   Content="DATOS TECNICOS: "
+            <Label x:Name="lblDatoServicio"
+                   Content="DATOS DEL SERVICIO: "
                    HorizontalAlignment="Left"
                    FontSize="15"/>
             <DataGrid Height="70" Width="500" Margin="10"
-                      x:Name="dgDaTecnicos" Opacity="0.75"
+                      x:Name="dgDatoServicio" Opacity="0.75"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="TIPO SOLICITUD" Width="150"/>
@@ -70,20 +71,35 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="4">
+
+        <StackPanel Grid.Row="4">
+            <Label x:Name="lblDatosTecnicos"
+           Content="DATOS DE LA APROBACION DEL SERVICIO: "
+           HorizontalAlignment="Left"
+           FontSize="15"/>
+            <DataGrid Height="70" Width="500" Margin="10"
+              x:Name="dgApServicio" Opacity="0.75"
+              AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="TIPO SOLICITUD" Width="150"/>
+                    <DataGridTextColumn Header="USO DEL SERVICIO" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5">
             <Button x:Name="btnAgregarSolicitud"
             Content="AGREGAR DATOS"
-            Width="200" Margin="60,0,0,0" Click="btnAgregarSolicitud_Click"/>
+            Width="200" Margin="160,0,0,0" Click="btnAgregarSolicitud_Click"/>
             <Button x:Name="btnBorrarSolicitud"
             Content="BORRAR DATOS"
             Width="200" Margin="35,0,0,0"/>
         </StackPanel>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="5">
+        <StackPanel Orientation="Horizontal" Grid.Row="6">
             <Button x:Name="btnRegresar"
                     Content="REGRESAR" 
-                    Margin="30,0,0,0"/>
+                    Margin="120,0,0,0"/>
             <Button x:Name="btnCargarArch"
                     Content="CARGAR ARCHIVO"
                     Width="175" Margin="15,0,0,0"/>
