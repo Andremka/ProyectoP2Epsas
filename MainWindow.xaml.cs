@@ -10,7 +10,6 @@ namespace WpfApp2P2D
     public partial class MainWindow : Window
     {
         private readonly string rutaYnombreArch = "c:\\DatosPersonales\\usuariosSignUp.txt";
-
         public MainWindow()
         {
             InitializeComponent();
@@ -44,7 +43,6 @@ namespace WpfApp2P2D
                     lblMensajes.Foreground = Brushes.White;
                     txtCorreo.Clear();
                     pwdPassword.Password = "";
-                    
                     return;
                 }
                 if (pwdPassword.Password.Length < 6)
@@ -53,7 +51,6 @@ namespace WpfApp2P2D
                     lblMensajes.Foreground = Brushes.White;
                     txtCorreo.Clear();
                     pwdPassword.Password = "";
-                    
                     return;
                 }
                 try
@@ -61,6 +58,7 @@ namespace WpfApp2P2D
                     string email = txtCorreo.Text;
                     string contra = pwdPassword.Password;
 
+                    Usuario usrLogueado = null;
                     if (!File.Exists(rutaYnombreArch))
                     {
                         lblMensajes.Foreground = Brushes.White;
@@ -73,24 +71,47 @@ namespace WpfApp2P2D
                     foreach (var unaLinea in lineas)
                     {
                         var partes = unaLinea.Split(',');
-                        if (partes.Length >= 7 && email.Equals(partes[3]) && contra.Equals(partes[6]))
+                        if (partes.Length >= 8 && email.Equals(partes[4]) && contra.Equals(partes[7]))
                         {
                             encontrado = true;
+                            // extraccion de datos a las propiedades de la clase Usuario
+                            usrLogueado = new Usuario(
+                                idU: int.Parse(partes[0]),
+                                nom: partes[1],
+                                aP: partes[2],
+                                aM: partes[3],
+                                corr: partes[4],
+                                anioN: int.Parse(partes[6]),
+                                cel: int.Parse(partes[5]),
+                                r: "Solicitante" 
+                            );
                             break;
                         }
                     }
-                    if (encontrado)
-                    {
+                    // verificacion de si un usuario es Administrador o Solicitante
+                    if (encontrado && usrLogueado != null){
                         lblMensajes.Content = "Bienvenido al sistema " + txtCorreo.Text;
-                        lblMensajes.Foreground = Brushes.Black;
+                        lblMensajes.Foreground = Brushes.White;
+                        if (contra.EndsWith("adm"))
+                        {
+                            // El usuario es Administrador
+                            MessageBox.Show("Iniciando sesión como Administrador");
+                            WinPrincipal bienvenida = new WinPrincipal();
+                            bienvenida.Show();
+                        }
+                        else
+                        {
+                            //El usuario es Solicitante
+                            MessageBox.Show("Iniciando sesión como Solicitante.");
+                            WinPrincipal bienvenida = new WinPrincipal(usrLogueado);
+                            bienvenida.Show();
+                        }
 
-                        WinPrincipal principal = new WinPrincipal();
-                        principal.Show();
                         this.Close();
                     }
-                    else 
+                    else
                     {
-                        lblMensajes.Content = "USUARIO NO AUTORIZADO...";
+                        lblMensajes.Content = "USUARIO O CONTRASEÑA INCORRECTOS...";
                         lblMensajes.Foreground = Brushes.White;
                         txtCorreo.Clear();
                         pwdPassword.Clear();

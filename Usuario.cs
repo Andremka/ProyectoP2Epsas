@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WpfApp2P2D
 {
-    class Usuario
+    public class Usuario
     {
         public int idUsuario { get; set; }
-        public  string nombre { get; set; }
+        public string nombre { get; set; }
         public string apPaterno { get; set; }
         public string apMaterno { get; set; }
         public string correo { get; set; }

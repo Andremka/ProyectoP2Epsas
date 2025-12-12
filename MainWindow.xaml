@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450"
-        Icon="C:\Users\Alumno\Escritorio\WpfAppProyectoP2D\imagenes\Icono Epsas.png">
+        Title="Login" Height="450" Width="450"
+        Icon="E:\Andres Univalle\PROGRAMACION II\ProyectoP2Epsas\imagenes\Icono Epsas.png">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
+            <ImageBrush ImageSource="E:\Andres Univalle\PROGRAMACION II\ProyectoP2Epsas\imagenes\FondoOscuroEpsas.png"
                 Opacity="0.85"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
 
         </Grid.RowDefinitions>
         <Label x:Name="lblLogin"
-               Content="LOGIN SAMAPA"
+               Content="LOGIN EPSAS"
                Grid.ColumnSpan="2"
                FontSize="35"/>
 
@@ -40,7 +40,7 @@
                  Opacity="0.55"/>
         <PasswordBox x:Name="pwdPassword" Height="50" Width="205" Grid.Row="2" Grid.Column="1" Opacity="0.55"/>
 
-        <Button x:Name="btnClean" Content="LIMPIAR" Grid.Row="3" Click="btnClean_Click"/>
+        <Button x:Name="btnClean" Content="LIMPIAR" Grid.Row="3" Click="btnClean_Click" />
         <Button x:Name="btnAcept" Content="ACEPTAR" Grid.Row="3" Grid.Column="1" Click="btnAcept_Click"/>
         <Button x:Name="btnRegistrar" Content="REGISTRARSE" Grid.Row="4" Grid.ColumnSpan="2" Click="btnRegistrar_Click" Width="150"/>
 

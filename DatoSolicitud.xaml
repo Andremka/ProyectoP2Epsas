@@ -5,107 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2P2D"
         mc:Ignorable="d"
-        Title="DatoSolicitud" Height="800" Width="750"
+        Title="DatoSolicitud" Height="650" Width="750"
         >
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/imagenes/FondoOscuroEpsas.png"
+            <ImageBrush ImageSource="E:\Andres Univalle\PROGRAMACION II\ProyectoP2Epsas\imagenes\FondoOscuroEpsas.png"
                 Opacity="0.85"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label x:Name="lblGestSolicitud"
                Content="GESTION SOLICTUDES EPSAS"
-               FontSize="30"/>
+               FontSize="25"/>
 
         <StackPanel Grid.Row="1">
             <Label x:Name="lblDatSolicitante"
-                   Content="DATOS SOLICITANTE:"
+                   Content="DATOS DE LOS SOLICITANTES: "
                    HorizontalAlignment="Left"
                    FontSize="15"/>
-            <DataGrid Height="70" Width="700" Margin="10"
+            <DataGrid Height="100" Width="700" Margin="10"
                       x:Name="dgSolicitudes" Opacity="0.75"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="50"/>
-                    <DataGridTextColumn Header="NOMBRE" Width="200"/>
+                    <DataGridTextColumn Header="ID USUARIO" Width="75" Binding="{Binding idUsuario}"/>
+                    <DataGridTextColumn Header="NOMBRES" Width="100" Binding="{Binding nombre}"/>
+                    <DataGridTextColumn Header="AP. PATERNO" Width="95" Binding="{Binding apPaterno}"/>
+                    <DataGridTextColumn Header="AP. MATERNO" Width="95" Binding="{Binding apMaterno}"/>
+                    <DataGridTextColumn Header="EMAIL" Width="100" Binding="{Binding correo}"/>
+                    <DataGridTextColumn Header="AÑO NAC." Width="70" Binding="{Binding añoNac}"/>
+                    <DataGridTextColumn Header="CELULAR" Width="80" Binding="{Binding celular}"/>
+                    <DataGridTextColumn Header="ROL" Width="*" Binding="{Binding rol}"/>
                 </DataGrid.Columns>
             </DataGrid>   
         </StackPanel>
 
         <StackPanel Grid.Row="2">
             <Label x:Name="lblDatInmueble"
-                   Content="DATOS SOLICITUD: "
+                   Content="SOLICITUDES: "
                    HorizontalAlignment="Left"
                    FontSize="15"/>
-            <DataGrid Height="70" Width="500" Margin="10"
+            <DataGrid Height="100" Width="700" Margin="10"
                       x:Name="dgInmuebles" Opacity="0.75"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="DIRECCION" Width="200"/>
-                    <DataGridTextColumn Header="# CASA" Width="50"/>
-                    <DataGridTextColumn Header="COORDENADAS" Width="100"/>
-                    <DataGridTextColumn Header="TIPO DE INMUBELE" Width="150"/>
+                    <DataGridTextColumn Header="ID USUARIO" Width="80" Binding="{Binding idUsuario}"/>
+                    <DataGridTextColumn Header="ID SOLICITUD" Width="85" Binding="{Binding idSolicitud}"/>
+                    <DataGridTextColumn Header="FECHA EMISION" Width="120" Binding="{Binding fechaEmision, StringFormat='yyyy-MM-dd'}"/>
+                    <DataGridTextColumn Header="ESTADO" Width="120" Binding="{Binding estado}"/>
+                    <DataGridTextColumn Header="TIPO SERVICIO" Width="150" Binding="{Binding tipoSolicitud}"/>
+                    <DataGridTextColumn Header="PRIORIDAD" Width="100" Binding="{Binding prioridad}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
 
         <StackPanel Grid.Row="3">
             <Label x:Name="lblDatoServicio"
-                   Content="DATOS DEL SERVICIO: "
+                   Content="DATOS DEL INMUEBLE: "
                    HorizontalAlignment="Left"
                    FontSize="15"/>
-            <DataGrid Height="70" Width="500" Margin="10"
+            <DataGrid Height="100" Width="700" Margin="10"
                       x:Name="dgDatoServicio" Opacity="0.75"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="TIPO SOLICITUD" Width="150"/>
-                    <DataGridTextColumn Header="USO DEL SERVICIO" Width="200"/>
+                    <DataGridTextColumn Header="NRO MEDIDOR" Width="100" Binding="{Binding nroMedidor}"/>
+                    <DataGridTextColumn Header="DIRECCION" Width="250" Binding="{Binding direccion}"/>
+                    <DataGridTextColumn Header="CATEGORIA" Width="120" Binding="{Binding categoria}"/>
+                    <DataGridTextColumn Header="TIPO INMUEBLE" Width="*" Binding="{Binding tipoInmueble}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
 
-        <StackPanel Grid.Row="4">
-            <Label x:Name="lblDatosTecnicos"
-           Content="DATOS DE LA APROBACION DEL SERVICIO: "
-           HorizontalAlignment="Left"
-           FontSize="15"/>
-            <DataGrid Height="70" Width="500" Margin="10"
-              x:Name="dgApServicio" Opacity="0.75"
-              AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="TIPO SOLICITUD" Width="150"/>
-                    <DataGridTextColumn Header="USO DEL SERVICIO" Width="200"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="5">
-            <Button x:Name="btnAgregarSolicitud"
-            Content="AGREGAR DATOS"
-            Width="200" Margin="160,0,0,0" Click="btnAgregarSolicitud_Click"/>
-            <Button x:Name="btnBorrarSolicitud"
-            Content="BORRAR DATOS"
-            Width="200" Margin="35,0,0,0"/>
-        </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="6">
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
             <Button x:Name="btnRegresar"
                     Content="REGRESAR" 
-                    Margin="120,0,0,0"/>
+                    Margin="25,0,0,0"
+                    Click="btnRegresar_Click"/>
+            <Button x:Name="btnCargarUsr"
+                    Content="CARGAR USUARIO"
+                    Width="175" Margin="15,0,0,0"
+                    Click="btnCargarUsr_Click"/>
             <Button x:Name="btnCargarArch"
-                    Content="CARGAR ARCHIVO"
-                    Width="175" Margin="15,0,0,0"/>
+                    Content="CARGAR SOLICITUD"
+                    Width="185" Margin="15,0,0,0"
+                    Click="btnCargarSolc_Click"/>
             <Button x:Name="btnGrabarArch"
                     Content="GRABAR ARCHIVO"
-                    Width="180" Margin="15,0,0,0"/>
+                    Width="180" Margin="15,0,0,0"
+                    Click="btnGrabarArch_Click"/>
         </StackPanel>
         
     </Grid>

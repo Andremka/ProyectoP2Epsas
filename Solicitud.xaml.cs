@@ -1,96 +1,155 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp2P2D
 {
-    /// <summary>
-    /// Lógica de interacción para Solicitud.xaml
-    /// </summary>
     public partial class Solicitud : Window
     {
+        // Variables para recibir las clases
+        private readonly Usuario _usuarioLogueado;
+        private SolicitudServ NuevaSolicitud;
+        private Inmueble InmuebleAfectado;
+        private readonly SolicitudServ _solicitudEdicion;
+        private readonly Inmueble _inmuebleEdicion;
+        // Rutas para guardar la solicitud del solicitante
         private readonly string rutaCarpeta = "c:\\Datos De Solicitud";
         private readonly string rutaArchivo = "c:\\Datos De Solicitud\\DatosSolicitud.txt";
         public Solicitud()
         {
             InitializeComponent();
+            _usuarioLogueado = null;
         }
-
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            txtCI.Clear();
-            txtDireccion.Clear();
-            txtNroCasa.Clear();
-            txtCoordenadas.Clear();
-            txtTipoInmueble.Clear();
-            txtPropietario.Clear();
-            txtTipoSolicitud.Clear();
-            txtUsoServ.Clear();
+        // Constructor para Solicitantes que recibe el Usuario Logueado
+        public Solicitud(Usuario usuario){
+            InitializeComponent();
+            _usuarioLogueado = usuario;
+            LlenarDatosIniciales(); // Inicializa el campo de ID Sugerido de Solicitud
         }
-
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtCI.Text == "" || txtDireccion.Text == "" || txtNroCasa.Text == "" ||
-                txtCoordenadas.Text == "" || txtTipoInmueble.Text == "" ||
-                txtPropietario.Text == "" || txtTipoSolicitud.Text == "" ||
-                txtUsoServ.Text == "")
-            {
-                MessageBox.Show("Debe de llenar todos los campos");
-                return;
+        public Solicitud(Usuario usuario, SolicitudServ solicitud, Inmueble inmueble) : this(usuario){
+            _solicitudEdicion = solicitud;
+            _inmuebleEdicion = inmueble;
+            LlenarDatosEdicion();
+        }
+        private void LlenarDatosIniciales() {
+            if (_usuarioLogueado != null){
+                txtIdUsuario.Text = _usuarioLogueado.idUsuario.ToString();
+                txtIdUsuario.IsEnabled = false; // Bloquear para que no se pueda cambiar
+                // Los campos de Fecha Emision y Estado se llenan automaticamente
+                txtFechaEmision.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                txtEstado.Text = "Pendiente de Envío";
+                txtIdSolicitud.Text = GenerarSiguienteIdSolicitud().ToString();
             }
-            try
-            {
-                if (!Directory.Exists(rutaCarpeta))
-                {
-                    Directory.CreateDirectory(rutaCarpeta);
+        }
+        private void LlenarDatosEdicion(){
+            if (_solicitudEdicion != null && _inmuebleEdicion != null){
+                // Rellenar campos de Solicitud e Inmueble
+                txtIdUsuario.Text = _usuarioLogueado.idUsuario.ToString(); // Ya está bloqueado
+                txtIdSolicitud.Text = _solicitudEdicion.idSolicitud.ToString();
+                txtFechaEmision.Text = _solicitudEdicion.fechaEmision.ToString("yyyy-MM-dd HH:mm:ss");
+                txtEstado.Text = _solicitudEdicion.estado;
+                txtTipoServicio.Text = _solicitudEdicion.tipoServicio;
+                txtPrioridad.Text = _solicitudEdicion.prioridad;
+                txtNroMedidor.Text = _inmuebleEdicion.nroMedidor.ToString();
+                txtDireccion.Text = _inmuebleEdicion.direccion;
+                txtCategoria.Text = _inmuebleEdicion.categoria;
+                txtTipoInmueble.Text = _inmuebleEdicion.tipoInmueble;
+            }
+        }
+        private int GenerarSiguienteIdSolicitud(){
+            if (!File.Exists(rutaArchivo)){
+                return 1; 
+            }
+            try{
+                var lineas = File.ReadAllLines(rutaArchivo).Where(l => !string.IsNullOrWhiteSpace(l));
+                if (!lineas.Any()) return 1;
+                var ultimaLinea = lineas.Last();
+                var partes = ultimaLinea.Split(',');
+                if (partes.Length > 1 && int.TryParse(partes[1], out int ultimoIdSolicitud)){
+                    return ultimoIdSolicitud + 1;
                 }
-                string datos =
-                    $"{txtCI.Text}," +
-                    $"{txtDireccion.Text}," +
-                    $"{txtNroCasa.Text}," +
-                    $"{txtCoordenadas.Text}," +
-                    $"{txtTipoInmueble.Text}," +
-                    $"{txtPropietario.Text}," +
-                    $"{txtTipoSolicitud.Text}," +
-                    $"{txtUsoServ.Text}\n";
-                File.AppendAllText(rutaArchivo, datos);
-                MessageBox.Show("Solicitud guardada correctamente");
-                txtCI.Clear();
-                txtDireccion.Clear();
-                txtNroCasa.Clear();
-                txtCoordenadas.Clear();
-                txtTipoInmueble.Clear();
-                txtPropietario.Clear();
-                txtTipoSolicitud.Clear();
-                txtUsoServ.Clear();
+                return lineas.Count() + 1; 
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar la Solicitud: " + ex.Message);
+            catch{
+                return 1;
             }
         }
-
-        private void btnRegSolicitud_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow login = new MainWindow();
-            login.Show();
+        private bool ValidarCampos(){
+            lblMensajes.Content = "";
+            lblMensajes.Foreground = Brushes.White;
+            if (txtIdSolicitud.Text == "" || txtTipoServicio.Text == "" ||
+                txtPrioridad.Text == "" || txtNroMedidor.Text == "" || txtDireccion.Text == "" ||
+                txtCategoria.Text == "" || txtTipoInmueble.Text == "")
+            {
+                lblMensajes.Content = "Debe llenar todos los campos requeridos.";
+                return false;
+            }
+            // Validacio de los campos numericos
+            int idSolicitud;
+            if (!int.TryParse(txtIdSolicitud.Text, out idSolicitud) || idSolicitud <= 0){
+                lblMensajes.Content = "ID Solicitante NO Valido";
+                txtIdSolicitud.Focus();
+                return false;
+            }
+            int nroMedidor;
+            if (!int.TryParse(txtNroMedidor.Text, out nroMedidor) || nroMedidor <= 0){
+                lblMensajes.Content = "Nro Medidor NO Valido";
+                txtNroMedidor.Focus();
+                return false;
+            }
+            // Creacion de los objetos con las clases creadas
+            NuevaSolicitud = new SolicitudServ(
+                idSolicitud,
+                DateTime.Now,
+                txtEstado.Text,
+                txtTipoServicio.Text,
+                txtPrioridad.Text
+            );
+            InmuebleAfectado = new Inmueble(
+                nroMedidor,
+                txtDireccion.Text,
+                txtCategoria.Text,
+                txtTipoInmueble.Text
+            );
+            return true;
+        }
+        private void btnClear_Click(object sender, RoutedEventArgs e){
+            txtTipoServicio.Clear();
+            txtPrioridad.Clear();
+            txtNroMedidor.Clear();
+            txtDireccion.Clear();
+            txtCategoria.Clear();
+            txtTipoInmueble.Clear();
+            lblMensajes.Content = "";
+        }
+        private void btnRegSolicitud_Click(object sender, RoutedEventArgs e){
+            WinPrincipal principal = new WinPrincipal(_usuarioLogueado);
+            principal.Show();
             this.Close();
         }
-
-        private void btnContinuar_Click(object sender, RoutedEventArgs e)
-        {
-
+        private void btnContinuar_Click(object sender, RoutedEventArgs e){
+            if (_usuarioLogueado == null){
+                lblMensajes.Content = "Error: Usuario no autenticado. Inicie sesión nuevamente.";
+                return;
+            }
+            if (ValidarCampos()){
+                try{ //VERIFICA QUE TENGA EL CONSTRUCTOR PARA PASAR A RESUMEN DE DATOS
+                    Confirmacion ventanaConfirmacion = new Confirmacion(
+                        _usuarioLogueado,
+                        NuevaSolicitud,
+                        InmuebleAfectado
+                    );
+                    ventanaConfirmacion.Show();
+                    this.Close();
+                }
+                catch (Exception ex){
+                    MessageBox.Show("Error al intentar continuar: " + ex.Message, "Error de Sistema", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
+
     }
 }

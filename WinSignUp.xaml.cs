@@ -21,11 +21,41 @@ namespace WpfApp2P2D
     /// </summary>
     public partial class WinSignUp : Window
     {
+        private const int ID_INICIO = 1001;
         private readonly string rutaYnombreArch = "c:\\DatosPersonales\\usuariosSignUp.txt";
         private readonly string rutaCarpeta = "c:\\DatosPersonales";
         public WinSignUp()
         {
             InitializeComponent();
+        }
+        private int ObtenerSiguienteIdUsuario()
+        {
+            if (!File.Exists(rutaYnombreArch))
+            {
+                return ID_INICIO;
+            }
+            try
+            {
+                var lineas = File.ReadAllLines(rutaYnombreArch).Where(l => !string.IsNullOrWhiteSpace(l)).ToList();
+                if (!lineas.Any())
+                {
+                    return ID_INICIO; 
+                }
+                var ultimaLinea = lineas.Last();
+                var partes = ultimaLinea.Split(',');
+                if (partes.Length >= 1 && int.TryParse(partes[0], out int ultimoId))
+                {
+                    return ultimoId + 1;
+                }
+                else
+                {
+                    return lineas.Count + ID_INICIO;
+                }
+            }
+            catch (Exception)
+            {
+                return ID_INICIO;
+            }
         }
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
@@ -45,51 +75,55 @@ namespace WpfApp2P2D
                 txtNacimiento.Text == "" || pwdContraseña.Password == "")
             {
                 lblMensajes.Content = "Debe completar TODOS los datos";
-                lblMensajes.Foreground = Brushes.Black;
+                lblMensajes.Foreground = Brushes.White;
             }
             else
             {
                 if (!Regex.IsMatch(txtCorreo.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
-                    txtNombre.Clear();
-                    txtApPat.Clear();
-                    txtApMat.Clear();
-                    txtCorreo.Clear();
-                    txtCelular.Clear();
-                    txtNacimiento.Clear();
-                    pwdContraseña.Password = "";
                     lblMensajes.Content = "Correo electrónico no válido";
-                    lblMensajes.Foreground = Brushes.Black;
+                    lblMensajes.Foreground = Brushes.White;
                     return;
                 }
                 if (pwdContraseña.Password.Length < 6)
                 {
                     lblMensajes.Content = "La contraseña debe tener al menos 6 caracteres";
-                    lblMensajes.Foreground = Brushes.Black;
+                    lblMensajes.Foreground = Brushes.White;
                     return;
                 }
-                int anio = int.Parse(txtNacimiento.Text);
-                if (anio <= 1950 && anio >= 2007)
+                if (!int.TryParse(txtNacimiento.Text, out int anio))
                 {
-                    txtNacimiento.Text = "";
+                    lblMensajes.Content = "El Año de Nacimiento debe ser un número válido.";
+                    lblMensajes.Foreground = Brushes.White;
+                    txtNacimiento.Clear();
+                    return;
+                }
+                if (anio < 1950 || anio > 2007)
+                {
+                    lblMensajes.Content = "Año de Nacimiento NO VALIDO";
+                    lblMensajes.Foreground = Brushes.White;
+                    txtNacimiento.Clear();
+                    return;
+                }
+                string celular = txtCelular.Text;
+                if (!Regex.IsMatch(celular, @"^[67]\d{7}$"))
+                {
+                    lblMensajes.Content = "Nro de Celular NO VALIDO";
+                    lblMensajes.Foreground = Brushes.White;
+                    txtCelular.Clear();
+                    return;
                 }
                 if (File.Exists(rutaYnombreArch))
                 {
                     var lineas = File.ReadAllLines(rutaYnombreArch);
-                    if (lineas.Any(l => l.Split(',').Length >= 7 && l.Split(',')[3] == txtCorreo.Text))
+                    if (lineas.Any(l => l.Split(',').Length >= 8 && l.Split(',')[4] == txtCorreo.Text))
                     {
                         lblMensajes.Content = "Este correo ya está registrado";
-                        lblMensajes.Foreground = Brushes.Black;
-                        txtNombre.Clear();
-                        txtApPat.Clear();
-                        txtApMat.Clear();
-                        txtCorreo.Clear();
-                        txtCelular.Clear();
-                        txtNacimiento.Clear();
-                        pwdContraseña.Password = "";
+                        lblMensajes.Foreground = Brushes.White;
                         return;
                     }
                 }
+                int nuevoId = ObtenerSiguienteIdUsuario();
                 if (!Directory.Exists(rutaCarpeta))
                 {
                     try
@@ -105,9 +139,10 @@ namespace WpfApp2P2D
                 try
                 {
                     lblMensajes.Content = "Registro exitoso Bienvenido/a " + txtNombre.Text;
-                    lblMensajes.Foreground = Brushes.Black;
+                    lblMensajes.Foreground = Brushes.White;
 
                     string datos =
+                        nuevoId + "," +
                         txtNombre.Text + "," +
                         txtApPat.Text + "," +
                         txtApMat.Text + "," +

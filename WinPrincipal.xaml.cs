@@ -19,15 +19,40 @@ namespace WpfApp2P2D
     /// </summary>
     public partial class WinPrincipal : Window
     {
+        // variable para guardar los datos del usuario
+        private readonly Usuario _usuarioLogueado;
+        public WinPrincipal(Usuario usuario)
+        {
+            InitializeComponent();
+            _usuarioLogueado = usuario;
+        }
         public WinPrincipal()
         {
             InitializeComponent();
+            _usuarioLogueado = null; // Indica que no hay un usuario solicitante específico
         }
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            Solicitud ventanaSolicitud = new Solicitud();
-            ventanaSolicitud.Show();
+            if (_usuarioLogueado != null)
+            {
+                // Si el usuario es Solicitante, pasa el objeto Usuario
+                Solicitud ventanaSolicitud = new Solicitud(_usuarioLogueado);
+                ventanaSolicitud.Show();
+            }
+            else
+            {
+                DatoSolicitud ventanaGestionSolc = new DatoSolicitud();
+                ventanaGestionSolc.Show();
+            }
+
+            this.Close();
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow Login = new MainWindow();
+            Login.Show();
             this.Close();
         }
     }

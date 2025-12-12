@@ -8,11 +8,11 @@
             <Setter Property="FontSize"
                     Value="20"/>
             <Setter Property="FontWeight"
-                    Value="Bold"/>
+                    Value="SemiBold"/>
             <Setter Property="Margin"
                     Value="5"/>
             <Setter Property="Foreground"
-                    Value="White"/>
+                    Value="LightGray"/>
             <Setter Property="HorizontalAlignment"
                     Value="Center"/>
             <Setter Property="VerticalAlignment"
@@ -26,7 +26,7 @@
             <Setter Property="Margin"
                     Value="10"/>
             <Setter Property="Background"
-                    Value="#2E1A47"/>
+                    Value="#6A1B9A"/>
             <Setter Property="Opacity"
                     Value="0.75"/>
             <Setter Property="Foreground"
@@ -35,6 +35,32 @@
                     Value="45"/>
             <Setter Property="Width"
                     Value="120"/>
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="White"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#8E24AA"/>
+                                <Setter TargetName="Border" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#4A148C"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontSize"
@@ -46,10 +72,35 @@
             <Setter Property="Foreground"
                     Value="Black"/>
             <Setter Property="Opacity"
-                    Value="0.75"/>
+                    Value="0.8"/>
             <Setter Property="VerticalAlignment"
                     Value="Center"/>
-            
+            <Setter Property="Padding"
+                    Value="5"/>
+            <Setter Property="BorderBrush"
+                    Value="LightGray"/>
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" 
+                    Value="20"/>
+            <Setter Property="FontFamily" 
+                    Value="Calibri"/>
+            <Setter Property="Margin" 
+                    Value="10"/>
+            <Setter Property="Foreground"
+                    Value="Black"/>
+            <Setter Property="Opacity" 
+                    Value="0.8"/>
+            <Setter Property="VerticalAlignment" 
+                    Value="Center"/>
+            <Setter Property="Padding" 
+                    Value="5"/>
+            <Setter Property="BorderBrush" 
+                    Value="LightGray"/>
+            <Setter Property="BorderThickness" 
+                    Value="1"/>
         </Style>
     </Application.Resources>
 </Application>
