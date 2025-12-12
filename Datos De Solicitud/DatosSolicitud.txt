@@ -1,0 +1,2 @@
+1001,1,2025-12-11 21:01:23,Pendiente de Envío,Red Alcantarillado,Alta,48784,Zona Bautista Saavedra,Hogar,Domicilio
+1001,2,2025-12-11 22:51:09,Pendiente de Envío,Alcantarillado,Alta,1454,Zona San Roque,Domicilio,Domicilio

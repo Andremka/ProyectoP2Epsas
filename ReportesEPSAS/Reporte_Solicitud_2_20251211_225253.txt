@@ -1,0 +1,25 @@
+
+=====================================================
+            REPORTE FINAL DE SOLICITUD
+=====================================================
+FECHA GENERACIÓN: 2025-12-11 22:52:53
+-----------------------------------------------------
+
+=== DATOS DEL SOLICITANTE ===
+Nombre Completo: Andres Mamani Kantuta
+
+-----------------------------------------------------
+=== DATOS DE LA SOLICITUD ===
+ID Solicitud:  2
+Fecha Emisión: 2025-12-11 22:51
+Estado:        Pendiente de Envío
+Tipo Servicio: Alcantarillado
+Prioridad:     Alta
+
+-----------------------------------------------------
+=== DATOS DEL INMUEBLE ===
+Nro. Medidor:  1454
+Dirección:     Zona San Roque
+Categoría:     Domicilio
+Tipo Inmueble: Domicilio
+=====================================================

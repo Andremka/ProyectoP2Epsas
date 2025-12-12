@@ -1,0 +1,3 @@
+1001,Andres,Mamani,Kantuta,mka@gmail.com,73024696,2006,halamadrid5
+1002,Laura,Mamani,Kantuta,mkl@gmail.com,78784455,1989,845441
+1003,Adonay,Mamani,Kantuta,amk@gmail.com,78484858,2006,madridadm
